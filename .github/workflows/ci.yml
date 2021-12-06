@@ -1,0 +1,26 @@
+---
+name: CI
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup
+        run: |
+          rustup default nightly
+          rustup component add clippy rustfmt
+
+      - name: Format
+        run: cargo fmt -- --check
+
+      - name: Clippy
+        run: cargo clippy -- -Dwarnings
+
+      - name: Build and Test
+        run: cargo test

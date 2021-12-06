@@ -1,0 +1,39 @@
+---
+default_profile: basic
+
+profiles:
+  - name: basic
+    config:
+      users:
+        - dan
+        - nobody
+      groups:
+        - dan
+        - nobody
+      dirs:
+        - path: /tmp
+          kind: tmpfs
+        - path: /proc
+          kind: proc
+        - path: /dev
+          kind: dev
+        - path: /var
+          kind: directory
+        - path: /home/dan
+          kind: directory
+      binds:
+        - kind: read_only
+          src: /usr
+          dest: /usr
+        - kind: read_only
+          src: /home/dan/.zshrc
+          dest: /home/dan/.zshrc
+      symlinks:
+        - src: usr/lib
+          dest: /lib
+        - src: usr/lib64
+          dest: /lib64
+        - src: usr/bin
+          dest: /bin
+        - src: usr/sbin
+          dest: /sbin
