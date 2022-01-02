@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = { version = "3.0.0-rc.8", features = ["derive"] }
+clap = { version = "3.0.0", features = ["derive"] }
 command-fds = "0.2.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.8.21"
