@@ -5,7 +5,8 @@ on:
   - push
 
 jobs:
-  build:
+  formatting-and-quality:
+    name: Formatting and Quality
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +22,17 @@ jobs:
 
       - name: Clippy
         run: cargo clippy -- -Dwarnings
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup
+        run: |
+          rustup default nightly
 
       - name: Build and Test
         run: cargo test
